@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
+    <title>Listar Tarefas</title>
+</head>
+<body>
+
+    <div id="ListaTarefas">
+    <h1>Lista de Tarefas</h1>
+
+    <form method="get" action="{% url 'listar_tarefas' %}">
+        <input type="text" name="search" placeholder="Buscar por título" value="{{ search_query }}">
+        <select name="status">
+            <option value="">Todos os Status</option>
+            <option value="pendente" {% if request.GET.status == 'pendente' %}selected{% endif %}>Pendente</option>
+            <option value="em_andamento" {% if request.GET.status == 'em_andamento' %}selected{% endif %}>Em Andamento</option>
+            <option value="concluida" {% if request.GET.status == 'concluida' %}selected{% endif %}>Concluída</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Status</th>
+                <th>Atribuído a</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarefa in tarefas %}
+                <tr>
+                    <td>{{ tarefa.titulo }}</td>
+                    <td>{{ tarefa.descricao }}</td>
+                    <td>{{ tarefa.get_status_display }}</td>
+                    <td>
+                        {% if tarefa.atribuido_a %}
+                            {{ tarefa.atribuido_a.username }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'editar_tarefa' tarefa.pk %}">Editar</a>
+                        <a href="{% url 'excluir_tarefa' tarefa.pk %}">Excluir</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Nenhuma tarefa encontrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{% url 'criar_tarefa' %}">Criar nova tarefa</a></p>
+
+</div>
+</body>
+</html>

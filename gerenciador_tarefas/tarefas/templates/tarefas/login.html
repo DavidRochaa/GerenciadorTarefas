@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Login</title>
 </head>
 <body>
+    <div id='TelaLogin'>
     <h1>Login</h1>
     <form method="post">
         {% csrf_token %} <!-- Proteção do CSRF -->
@@ -11,5 +15,6 @@
         <button type="submit">Entrar</button>
     </form>
     <p>Ainda não tem uma conta? <a href="{% url 'signup' %}">Crie uma agora</a>.</p>
+</div>
 </body>
 </html>

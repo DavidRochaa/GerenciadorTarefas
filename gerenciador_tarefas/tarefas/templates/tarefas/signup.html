@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Cadastro</title>
 </head>
 <body>
+    <div id="CadastroUsuario">
     <h1>Cadastro</h1>
     <form method="post">
         {% csrf_token %} <!-- Proteção do CSRF -->
@@ -11,5 +15,6 @@
         <button type="submit">Cadastrar</button>
     </form>
     <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a>.</p>
+</div>
 </body>
 </html>

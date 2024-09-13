@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Excluir Tarefa</title>
 </head>
 <body>
+    <div id="ExcluirTarefa">
     <h1>Excluir Tarefa</h1>
     <p>Você tem certeza de que deseja excluir a tarefa "{{ tarefa.titulo }}"?</p>
     <form method="post">
@@ -11,5 +15,6 @@
         <button type="submit">Confirmar Exclusão</button>
     </form>
     <p><a href="{% url 'listar_tarefas' %}">Cancelar</a></p>
+</div>
 </body>
 </html>

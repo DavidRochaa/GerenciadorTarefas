@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Tarefa
 from .forms import TarefaForm, CustomUserCreationForm
 
+#Função para criar novo usuário
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -16,6 +17,7 @@ def signup(request):
         form = CustomUserCreationForm()
     return render(request, 'tarefas/signup.html', {'form': form})
 
+#Função para criar nova tarefa
 @login_required
 def criar_tarefa(request):
     if request.method == 'POST':
@@ -29,6 +31,7 @@ def criar_tarefa(request):
         form = TarefaForm()
     return render(request, 'tarefas/criar_tarefa.html', {'form': form})
 
+#Função para editar tarefa existente
 @login_required
 def editar_tarefa(request, pk):
     tarefa = get_object_or_404(Tarefa, pk=pk)
@@ -46,6 +49,7 @@ def editar_tarefa(request, pk):
     
     return render(request, 'tarefas/editar_tarefa.html', {'form': form})
 
+#Função para listar as tarefas do usuário
 @login_required
 def listar_tarefas(request):
     status_filter = request.GET.get('status', None)
@@ -65,6 +69,7 @@ def listar_tarefas(request):
         'search_query': search_query,
     })
 
+#Função para excluir tarefa
 @login_required
 def excluir_tarefa(request, pk):
     tarefa = get_object_or_404(Tarefa, pk=pk)

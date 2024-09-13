@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
     <title>Login</title>
 </head>
 <body>
-    <div id="TelaLogin">
-        <h2>Login</h2>
-        <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %} <!-- Proteção do CSRF -->
+        {{ form.as_p }} <!-- Exibe o formulário -->
         <button type="submit">Entrar</button>
     </form>
     <p>Ainda não tem uma conta? <a href="{% url 'signup' %}">Crie uma agora</a>.</p>
-</div>
 </body>
 </html>

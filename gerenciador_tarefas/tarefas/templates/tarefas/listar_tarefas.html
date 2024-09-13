@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
     <title>Listar Tarefas</title>
 </head>
 <body>
-
-    <div id="ListaTarefas">
     <h1>Lista de Tarefas</h1>
 
     <form method="get" action="{% url 'listar_tarefas' %}">
@@ -58,7 +53,5 @@
         </tbody>
     </table>
     <p><a href="{% url 'criar_tarefa' %}">Criar nova tarefa</a></p>
-
-</div>
 </body>
 </html>

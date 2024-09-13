@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tarefas",
+    "tarefas",  # App customizado
 ]
 
 MIDDLEWARE = [
@@ -82,6 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Definição do fuso horário e o idioma para o Brasil.
 LANGUAGE_CODE = "pt-br"
 
 TIME_ZONE = "America/Sao_Paulo"
@@ -90,15 +91,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Redirecionamentos
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_REDIRECT_URL = '/tarefas/listar/'
 LOGOUT_REDIRECT_URL = '/login/'
-
-STATICFILES_DIRS = [
-        BASE_DIR / "static",
-]

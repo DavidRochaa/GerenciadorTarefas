@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Tarefa
 
+#Formulário para tarefa
 class TarefaForm(forms.ModelForm):
     class Meta:
         model = Tarefa
@@ -13,6 +14,7 @@ class TarefaForm(forms.ModelForm):
         if self.instance.pk:
             self.fields['atribuido_a'].queryset = User.objects.all()
 
+#Formulário para criação de usuário
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
 

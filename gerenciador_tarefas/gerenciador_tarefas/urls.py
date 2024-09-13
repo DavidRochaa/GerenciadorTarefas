@@ -4,9 +4,11 @@ from django.contrib.auth import views as auth_views
 from django.shortcuts import redirect
 from tarefas import views as tarefas_views
 
+#Redireciona para a página de login
 def redirect_to_login(request):
     return redirect('login')
 
+#Mapeamento das URLS 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', redirect_to_login, name='home'),

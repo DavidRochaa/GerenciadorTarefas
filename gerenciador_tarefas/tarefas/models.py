@@ -8,6 +8,7 @@ class Tarefa(models.Model):
         ('concluida', 'Concluída'),
     ]
 
+ #Campos do modelo
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pendente')
@@ -15,6 +16,7 @@ class Tarefa(models.Model):
     atualizado_em = models.DateTimeField(auto_now=True)
     atribuido_a = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tarefas', null=True, blank=True)
 
+#Retornam título e tarefa
     def __str__(self):
         return self.titulo
 

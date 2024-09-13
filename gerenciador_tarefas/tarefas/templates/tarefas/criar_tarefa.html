@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <img src="{% static 'img/logo.png' %}" alt="Logo da Instituição">
     <title>Criar Tarefa</title>
 </head>
 <body>
-    <div id="CriarTarefa">
     <h1>Criar Nova Tarefa</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+        {% csrf_token %} <!-- Proteção do CSRF -->
+        {{ form.as_p }} <!-- Exibe o formulário -->
         <button type="submit">Criar Tarefa</button>
     </form>
     <p><a href="{% url 'listar_tarefas' %}">Voltar para a lista de tarefas</a></p>
-</div>
 </body>
 </html>
